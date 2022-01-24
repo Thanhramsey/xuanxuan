@@ -56,7 +56,7 @@
       class="noi-len"
       style="z-index: 10; margin-bottom: 20px"
     >
-      Bói
+      Gieo quẻ
     </v-btn>
     <v-dialog v-model="dialog" width="500" height="500" class="mtp-dialog">
       <v-card>
@@ -164,7 +164,16 @@ export default Vue.extend({
   computed: {},
   methods: {
     generateContent() {
+
+    if(this.namsinh == 0 || this.ten==""){
       this.dialog = true;
+      this.content =  "Bạn quên chưa nhập tên với năm sinh kìa :P"; 
+    }else if(this.namsinh >2008 || this.namsinh <1952){
+      this.dialog = true;
+      this.content =  "Năm sih từ 1952 tới 2007 thui nha  >.<"; 
+    }
+    else{
+    this.dialog = true;
 	  let obj: any = {};
 	  for(let i=0; i< this.namTuoi.length;i++){
 		  if(this.namTuoi[i].year == this.namsinh){
@@ -176,14 +185,17 @@ export default Vue.extend({
 	  let hoangoc = obj.hoangoc ? "Có":"Không";
 	  let kimlau = obj.kimlau ? "Có":"Không";
 	  let link = this.isMale? obj.linknam : obj.linknu;
+    let tuoiAm = new Date().getFullYear()  - this.namsinh + 1;
 	  let str = '<a target="_blank" href="' + link + '">Chi tiết</a>';
       this.content =  this.ten + " thân mến! " + "<br/>" +
-	  				  " Bạn sinh năm:"  + obj.year + " " +obj.name + "<br/>" +
-					  " Tam Tai:" + tamtai + "<br/>" +
-					  " Hoàng Ôc:" + hoangoc + "<br/>" +
-					  " Kim Lâu:" + kimlau + "<br/>" +
-					  obj.tomtat + "<br/>" +
-					  str;
+	  				  " Bạn sinh năm: "  + obj.year + "<br/>" +
+              tuoiAm + " Tuổi * " +obj.name + "<br/>" +
+					    " Tam Tai: " + tamtai + "<br/>" +
+					    " Hoàng Ôc: " + hoangoc + "<br/>" +
+					    " Kim Lâu: " + kimlau + "<br/>" +
+					    obj.tomtat + "<br/>" +
+					    str; 
+    }
     },
   },
 });
@@ -198,13 +210,15 @@ export default Vue.extend({
 }
 .v-dialog__content.v-dialog__content--active  .v-card__text{
 	background-image: url(dialog.jpg);
-	height: 400px !important;
-	padding: 0 !important;
 	background-repeat: no-repeat;
   	background-size: 100% 100%;
+      font-size: 15px;
+    padding: 29px;
+    color: firebrick;
+    font-family: cursive;  
 }
 .dialog-cl{
-	background-color: #fed469 !important;
+	background-color: #72100f !important;
 	border-bottom: 1px solid #fa8d1e;
 	color: #fff !important;
 }
