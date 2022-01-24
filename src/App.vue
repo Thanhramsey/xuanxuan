@@ -1,24 +1,25 @@
 <template>
   <div id="app">
-	<v-main id="home">
-	<keep-alive>
-    	<router-view />
-	</keep-alive>
-	<Particles id="tsparticles" :options="snowConfig" />
-  </v-main>
+    <v-app>
+      <v-main id="home">
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+        <Particles id="tsparticles" :options="snowConfig" />
+      </v-main>
+    </v-app>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 import Particles from "particles.vue";
 export default Vue.extend({
-  name: 'App',
-  components: {
-  },
-  data () {
+  name: "App",
+  components: {},
+  data() {
     return {
-		snowConfig: {
+      snowConfig: {
         background: {
           color: "red",
         },
@@ -61,19 +62,21 @@ export default Vue.extend({
           },
         },
       },
-	}
-  }
-})
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-@import './styles/bootstrap-grid.min.css';
-@import './app.scss';
+@import "./styles/bootstrap-grid.min.css";
+@import "./app.scss";
 #home {
-	padding: 20px 0px !important;
-	height: inherit;
-	background-image: url('bg.png');
-	background-repeat: repeat
-	;
-  }
+  padding: 15px 0px !important;
+  height: 100%;
+  background-image: url("bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  overflow-y: hidden;
+}
 </style>
