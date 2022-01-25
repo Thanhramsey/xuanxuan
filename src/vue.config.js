@@ -1,5 +1,5 @@
 module.exports = {
 	publicPath: process.env.NODE_ENV === 'production'
-	  ? '/vongxoay/' // Thay tên repository của các bạn vào đây nhé
+	  ? '/xuanxuan/' // Thay tên repository của các bạn vào đây nhé
 	  : '/'
   }

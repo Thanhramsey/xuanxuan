@@ -6,6 +6,7 @@
           <router-view />
         </keep-alive>
         <Particles id="tsparticles" :options="snowConfig" />
+		<nhac></nhac>
       </v-main>
     </v-app>
   </div>
@@ -14,9 +15,14 @@
 <script lang="ts">
 import Vue from "vue";
 import Particles from "particles.vue";
+import nhac from "./main_component/nhac.vue";
+// @ts-ignore
+// import music from '../assets/music.mp3';
 export default Vue.extend({
   name: "App",
-  components: {},
+  components: {
+	  nhac
+  },
   data() {
     return {
       snowConfig: {
@@ -64,6 +70,8 @@ export default Vue.extend({
       },
     };
   },
+  methods: {
+  }
 });
 </script>
 
